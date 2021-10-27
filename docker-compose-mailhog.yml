@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  exter_mailhog:
+    container_name: extern_mailhog
+    restart: on-failure
+    image: mailhog/mailhog:latest
+    entrypoint: /home/mailhog/entrypoint.sh
+    ports:
+      - 8025:8025 # web ui
+    networks:
+      - app-network
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
